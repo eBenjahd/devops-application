@@ -1,0 +1,1 @@
+from .ask_ai_service import CallAIModel

@@ -20,7 +20,7 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 
 CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=[])
 
-
+OPENAI_API_KEY = env("OPENAI_API_KEY")
 # Application definition
 
 INSTALLED_APPS = [
