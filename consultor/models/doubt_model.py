@@ -7,7 +7,7 @@ class Doubt(models.Model):
         CONSULTOR = "consultor", "Consultor"
         ERROR = "error", "Diagnosticar error"
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="consultas")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="consultas", null=True, blank=True,)
     mode = models.CharField(max_length=20, choices=Mode.choices)
     question = models.TextField()
     answer = models.TextField()
