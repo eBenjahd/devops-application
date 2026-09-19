@@ -1,0 +1,1 @@
+from .doubt_model import Doubt
