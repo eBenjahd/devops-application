@@ -1,1 +1,1 @@
-from .ask_ai_service import CallAIModel
+from .ask_ai_service import CallAIModel, UNKNOWN

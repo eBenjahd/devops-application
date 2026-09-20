@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from adrf.views import APIView
 from consultor.models import Doubt
 from consultor.serializers import AskSerializer
-from consultor.services import CallAIModel
+from consultor.services import CallAIModel, UNKNOWN 
 
 
 class AskView(APIView):
@@ -29,6 +29,13 @@ class AskView(APIView):
             return Response(
                 {"error": "El servicio de IA no está disponible, intenta de nuevo."},
                 status=status.HTTP_502_BAD_GATEWAY,
+            )
+        
+        if answer.strip().strip(".").upper() == UNKNOWN:
+            
+            return Response(
+                {"error": "No puedo ayudarte con eso. Solo respondo consultas de DevOps."},
+                status=status.HTTP_422_UNPROCESSABLE_ENTITY,
             )
 
         consulta = await Doubt.objects.acreate(
