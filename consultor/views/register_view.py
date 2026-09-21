@@ -2,6 +2,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from consultor.serializers import RegisterSerializer
+from rest_framework import status
 
 class RegisterView(CreateAPIView):
 
@@ -16,8 +17,10 @@ class RegisterView(CreateAPIView):
         access = refresh.access_token
 
         response = Response({
-            "message": "Usuario creado correctamente"
-        })
+                "message": "Usuario creado correctamente"
+            }, 
+            status = status.HTTP_201_CREATED
+        )
 
         response.set_cookie(
             key="access_token",
