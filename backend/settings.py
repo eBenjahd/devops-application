@@ -20,6 +20,8 @@ CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 
 CORS_ALLOWED_ORIGINS = env.list("CORS_ALLOWED_ORIGINS", default=[])
 
+CORS_ALLOW_CREDENTIALS = env.bool("CORS_ALLOW_CREDENTIALS", default=True)
+
 OPENAI_API_KEY = env("OPENAI_API_KEY")
 # Application definition
 
@@ -146,8 +148,8 @@ REST_FRAMEWORK = {
         "rest_framework.throttling.UserRateThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
-        "anon": "5/day",
-        "user": "10/day",
+        "anon": "30/day",
+        "user": "100/day",
     },
     "DEFAULT_PAGINATION_CLASS":
         "rest_framework.pagination.PageNumberPagination",
