@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+export PATH="$HOME/.local/bin:$PATH"
+
 PROJECT_DIR="/var/www/consultor"
 
 echo "Entrando al proyecto..."
