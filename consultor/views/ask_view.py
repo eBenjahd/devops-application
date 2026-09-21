@@ -6,9 +6,12 @@ from adrf.views import APIView
 from consultor.models import Doubt
 from consultor.serializers import AskSerializer
 from consultor.services import CallAIModel, UNKNOWN 
+from rest_framework.permissions import IsAuthenticated
 
 
 class AskView(APIView):
+
+    permission_classes = [IsAuthenticated]
 
     async def post(self, request):
 
@@ -39,12 +42,7 @@ class AskView(APIView):
             )
 
         consulta = await Doubt.objects.acreate(
-
-            user=(
-                request.user
-                if request.user.is_authenticated
-                else None
-            ),
+            user=request.user,
             mode=data["mode"],
             question=data["message"],
             answer=answer,
