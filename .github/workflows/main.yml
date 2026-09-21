@@ -45,15 +45,17 @@ jobs:
 
       - name: Archivos sensibles
         run: |
+          ARCHIVE="/tmp/deploy.tar.gz"
           tar \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='.venv' \
-            --exclude='__pycache__' \
-            --exclude='.env' \
-            --exclude='db.sqlite3' \
-            --exclude='deploy.tar.gz' \
-            -czf deploy.tar.gz .
+            --exclude='./.git' \
+            --exclude='./.github' \
+            --exclude='./.venv' \
+            --exclude='*/__pycache__' \
+            --exclude='./.env' \
+            --exclude='./db.sqlite3' \
+            --exclude='./deploy.tar.gz' \  
+            -czf "$ARCHIVE" \
+            -C "$GITHUB_WORKSPACE" .
 
       - name: Pegamos proyecto a server
         run: |
