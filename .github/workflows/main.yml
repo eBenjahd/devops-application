@@ -63,6 +63,6 @@ jobs:
               cd /var/www/consultor &&
               tar -xzf deploy.tar.gz &&
               rm deploy.tar.gz &&
-              chmod +x scripts/deploy.sh &&
-              ./scripts/deploy.sh
+              chmod +x deploy.sh &&
+              ./deploy.sh
             "
