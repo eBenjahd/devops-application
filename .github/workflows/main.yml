@@ -24,6 +24,9 @@ jobs:
       - name: Instalamos dependencias
         run: uv sync
 
+      - name: Verificamos codigo
+        run: uv run ruff check .
+
       - name: Corremos basic tests
         run: uv run python manage.py test
 
