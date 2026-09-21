@@ -1,7 +1,5 @@
-from django.test import TestCase
-from consultor.models import Doubt
 from django.contrib.auth.models import User
-from rest_framework_simplejwt.tokens import RefreshToken
+from django.test import TestCase
 
 
 class ViewsTest(TestCase):
@@ -9,7 +7,7 @@ class ViewsTest(TestCase):
     def test_create_register(self):
 
         response = self.client.post(
-            f"/api/auth/register/",
+            "/api/auth/register/",
             data = {
                 "username": "test",
                 "email": "test@gmail.com",
@@ -58,7 +56,7 @@ class LoginTests(TestCase):
     def test_login(self):
 
         response = self.client.post( 
-            f"/api/auth/login/",
+            "/api/auth/login/",
             data = {
                 "username" : self.user.username,
                 "password" : self.password
@@ -73,7 +71,7 @@ class LoginTests(TestCase):
     def test_login_incorrect_password(self):
 
         response = self.client.post( 
-            f"/api/auth/login/",
+            "/api/auth/login/",
             data = {
                 "username" : self.user.username,
                 "password" : "1234test"

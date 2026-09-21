@@ -1,8 +1,9 @@
 from django.urls import path
+
 from consultor.views import (
-    RegisterView,
-    LoginView,
     CookieTokenRefreshView,
+    LoginView,
+    RegisterView,
     UserMeView,
 )
 

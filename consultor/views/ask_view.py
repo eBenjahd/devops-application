@@ -1,12 +1,12 @@
+from adrf.views import APIView
 from openai import OpenAIError
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from adrf.views import APIView
 from consultor.models import Doubt
 from consultor.serializers import AskSerializer
-from consultor.services import CallAIModel, UNKNOWN 
-from rest_framework.permissions import IsAuthenticated
+from consultor.services import UNKNOWN, CallAIModel
 
 
 class AskView(APIView):

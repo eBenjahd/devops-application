@@ -1,5 +1,5 @@
-from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework.response import Response
+from rest_framework_simplejwt.views import TokenRefreshView
 
 
 class CookieTokenRefreshView(TokenRefreshView):
