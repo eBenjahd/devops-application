@@ -1,8 +1,10 @@
+from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+
 from consultor.serializers import RegisterSerializer
-from rest_framework import status
+
 
 class RegisterView(CreateAPIView):
 

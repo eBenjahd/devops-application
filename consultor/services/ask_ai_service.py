@@ -1,5 +1,5 @@
-from openai import AsyncOpenAI
 from django.conf import settings
+from openai import AsyncOpenAI
 
 UNKNOWN = "DESCONOCIDO"
 
