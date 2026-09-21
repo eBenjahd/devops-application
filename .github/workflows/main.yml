@@ -43,26 +43,16 @@ jobs:
             ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
             "echo 'SSH connection successful'"
 
-      - name: Archivos sensibles
-        run: |
-          ARCHIVE="/tmp/deploy.tar.gz"
-          tar \
-            --exclude='./.git' \
-            --exclude='./.github' \
-            --exclude='./.venv' \
-            --exclude='*/__pycache__' \
-            --exclude='./.env' \
-            --exclude='./db.sqlite3' \
-            --exclude='./deploy.tar.gz' \  
-            -czf "$ARCHIVE" \
-            -C "$GITHUB_WORKSPACE" .
+      - name: Empaquetar proyecto
+        run: git archive --format=tar.gz -o /tmp/deploy.tar.gz HEAD
 
       - name: Pegamos proyecto a server
         run: |
           scp \
             -i ~/.ssh/id_ed25519 \
-            deploy.tar.gz \
+            /tmp/deploy.tar.gz \
             ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/var/www/consultor/
+
 
       - name: Ejecutamos deploy
         run: |
